@@ -1,0 +1,84 @@
+.mail {
+    text-decoration: none;
+}
+
+.mail-content:hover {
+    background-color: rgba(97, 152, 255, 0.1);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.no-visto {
+    background-color: rgba(97, 152, 255, 0.3);
+}
+
+.importante {
+    //border: 2px solid $primary;
+    outline: 2px solid #fff01e;
+    background-color: #fff01e23;
+    border-radius: 5px;
+}
+
+.content-mail {
+    width: 65%;
+}
+
+.name-mail {
+    width: 22%;
+}
+
+.date-mail {
+    width: 11%;
+}
+
+.mycheck {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.checkbox-label {
+    display: inline;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.checkbox-label:hover {
+    background-color: rgba(0, 0, 0, 0.099);
+}
+
+
+/* .mail-content:hover .mycheck {
+    transition: background-color 0.2s ease-in-out;
+    border: 2px solid $primary;
+}
+
+.mycheck:checked {
+    background-color: $basicSecondary;
+}
+
+.selected-mail {
+    outline: 2px solid $primary;
+    border-radius: 5px;
+} */
+
+.tools-display-none {
+    display: none;
+}
+
+.tool-item {
+    padding: 2px;
+    border-radius: 25%;
+}
+
+.tool-item:hover {
+    background-color: rgba(0, 0, 0, 0.048);
+}

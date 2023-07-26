@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Iniciar Sesión</div>
+
+                <div class="card-body">
+                    <div *ngIf="error" class="alert alert-danger">
+                        <div>{{mensajeError}}</div>
+
+                    </div>
+                    <form [formGroup]="form" (ngSubmit)="submit()">
+
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">Email:</label>
+                            <div class="col-md-6">
+                                <input id="email" type="text" formControlName="email" class="form-control " name="email" value="" required autocomplete="email" autofocus>
+                                <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                                    <div *ngIf="f['email'].errors?.['required']">*Email is required.</div>
+                                    <div *ngIf="f['email'].errors?.['email']">*The email must only contain letters.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Password:</label>
+                            <div class="col-md-6">
+                                <input formControlName="password" id="password" type="text" class="form-control " name="password" value="" required autocomplete="password" autofocus>
+                                <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+                                    <div *ngIf="f['password'].errors?.['required']">*Name is required.</div>
+                                    <div *ngIf="f['password'].errors?.['pattern']">*The password must only contain letters.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Ingresar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
