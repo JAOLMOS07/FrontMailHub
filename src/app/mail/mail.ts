@@ -1,3 +1,4 @@
+import {User} from "../user/user" 
 export interface Mail {
     id: number,
     asunto: string,
@@ -12,5 +13,7 @@ export interface Mail {
     eliminado_destinatario: number,
     from_email: string,
     to_email: string,
-    created_at: string
+    created_at: string,
+    user: User,
+    user_to: User
 }

@@ -8,21 +8,24 @@
                 </div>
                 <hr>
                 <!--  @include('partials.tools') -->
+                <app-tools></app-tools>
                 <p class="lead text-secondary">Mails recibidos.</p>
                 <hr>
                 <ul class="list-group">
 
-                    <li *ngFor="let mail of mails" class="mail-content list-group-item list-group-item-action  mb-3 shadow-sm align-item-center border-0 ">
-                        <a class="mail d-flex justify-content-between " href="#">
+                    <li *ngFor="let mail of mails" [ngClass]="{'importante':mail.importante,'visto':mail.visto,'no-visto':!mail.visto}" class="mail-content list-group-item list-group-item-action  mb-3 shadow-sm align-item-center border-0 ">
+                        <a class="mail d-flex justify-content-between ">
 
                             <span class="text-secondary font-weight-bold d-inline name-mail" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                
-                                <strong>  {{mail.from_email}}</strong>
+                                <label for="check-{{mail.id}}" class="checkbox-label">
+                                    <input class=" mycheck form-check-input" id="check-{{mail.id}}" type="checkbox" (change)="$event.stopPropagation()" > 
+                                </label>
+                                <strong (click)="ver(mail)">  {{mail.from_email}}</strong>
                             </span>
-                            <span class="text-black-50 d-inline content-mail" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <span (click)="ver(mail)" class="text-black-50 d-inline content-mail" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             <strong>{{mail.asunto}}</strong> - {{mail.contenido}}
                         </span>
-                            <span class="text-black-50 d-inline date-mail " style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <span (click)="ver(mail)" class="text-black-50 d-inline date-mail " style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             {{mail.created_at | date}}
                         </span>
 

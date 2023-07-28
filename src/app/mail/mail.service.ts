@@ -22,7 +22,7 @@ export class MailService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAll(token: string): Observable<Mail[]> {
+  getEntrada(token: string): Observable<Mail[]> {
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -34,9 +34,50 @@ export class MailService {
       catchError(this.errorHandler)
     )
   }
-
-  register(mail: Mail): Observable<Mail> {
-    return this.httpClient.post<Mail>(this.apiURL+"mails", JSON.stringify(mail), this.httpOptions)
+  getMail(token: string,mailId: string): Observable<Mail> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+  }
+    return this.httpClient.get<Mail>(this.apiURL+`mails/${mailId}`, this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  getEnviados(token: string): Observable<Mail[]> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+  }
+    return this.httpClient.get<Mail[]>(this.apiURL+"mails/enviados", this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  Visto(token: string,mailId: number): Observable<Mail> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+  }
+    return this.httpClient.put<Mail>(this.apiURL+`mails/visto/${mailId}`, this.httpOptions)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  create(token: string,mail: Mail): Observable<Mail[]> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+  }
+    return this.httpClient.post<Mail[]>(this.apiURL+"mails",JSON.stringify(mail), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )

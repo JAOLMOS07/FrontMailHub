@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 
@@ -10,15 +10,27 @@ import { UserService } from '../user/user.service';
 })
 export class NavbarComponent implements OnInit {
 sesion!: any;
+ruta: string= "";
 constructor(
   public userService: UserService,
-  private router: Router,
+  public router: Router,
 ) { }
 ngOnInit(): void {
+  
   this.sesion = JSON.parse(localStorage.getItem('sesion') || '{}');
   if(Object.entries(this.sesion).length === 0){
     this.sesion = null;
   }
+
+  
+
+
+ 
+}
+
+
+route(): void {
+  console.log(this.router.url); 
 }
 
 cerrarSesion(): void {

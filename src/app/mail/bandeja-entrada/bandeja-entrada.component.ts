@@ -31,12 +31,23 @@ ngOnInit(): void {
     this.router.navigateByUrl('user');
 
   }
-  this.mailService.getAll(this.sesion.token).subscribe((data: any)=>{
+  this.mailService.getEntrada(this.sesion.token).subscribe((data: any)=>{
     this.mails = data.data.data;
     console.log(this.mails);
   })
 
 
+}
+
+ver(mail:Mail):void
+{
+  if(!mail.visto)
+  {
+    this.mailService.Visto(this.sesion.token,mail.id).subscribe((data: any)=>{
+      console.log(data);
+    })
+  }
+  this.router.navigateByUrl(`mail/show/${mail.id}`);
 }
 
 

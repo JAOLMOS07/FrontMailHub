@@ -1,5 +1,20 @@
+// Body
+$body-bg: #fcfdff;
+// Typography
+$font-family-sans-serif: 'Nunito',
+sans-serif;
+$font-size-base: 1.1rem;
+$line-height-base: 1.6;
+$primary:#3765ff;
+$enable-gradients:false;
+$enable-responsive-font-sizes: true;
+$basicSecondary: #6a5cea;
 .mail {
     text-decoration: none;
+}
+
+.mail-content {
+    cursor: pointer;
 }
 
 .mail-content:hover {
@@ -17,6 +32,7 @@ footer {
 
 .no-visto {
     background-color: rgba(97, 152, 255, 0.3);
+    border-radius: 5px;
 }
 
 .importante {
@@ -55,8 +71,7 @@ footer {
     background-color: rgba(0, 0, 0, 0.099);
 }
 
-
-/* .mail-content:hover .mycheck {
+.mail-content:hover .mycheck {
     transition: background-color 0.2s ease-in-out;
     border: 2px solid $primary;
 }
@@ -68,7 +83,7 @@ footer {
 .selected-mail {
     outline: 2px solid $primary;
     border-radius: 5px;
-} */
+}
 
 .tools-display-none {
     display: none;

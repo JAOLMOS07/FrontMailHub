@@ -4,34 +4,48 @@
         <div class="col-12 col-sm-10  col-lg-6 mx-auto">
 
 
-            <form class="bg-white shadow rounded py-3 px-4" method="post" action="">
+            <form class="bg-white shadow rounded py-3 px-4" [formGroup]="form" (ngSubmit)="submit()">
 
                 <h1 class="display-4">Redactar Email</h1>
                 <hr>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-control bg-light border-0 shadow-sm " id="email" name="email" placeholder="Email..." value="">
-
+                    <input class="form-control bg-light border-0 shadow-sm " id="email" name="email" formControlName="email" placeholder="Email..." value="">
+                    <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['email'].errors?.['required']">*Campo requerido.</div>
+                        <div *ngIf="f['email'].errors?.['email']">*No es un email valido.</div>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">Asunto</label>
-                    <input class="form-control bg-light border-0 shadow-sm " id="subject" name="subject" placeholder="Asunto..." value="">
+                    <label for="asunto">Asunto</label>
+                    <input class="form-control bg-light border-0 shadow-sm " id="asunto" name="asunto" placeholder="Asunto..." formControlName="asunto" value="">
+                    <div *ngIf="f['asunto'].touched && f['asunto'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['asunto'].errors?.['required']">*Campo requerido.</div>
+                    </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="content">Contenido</label>
-                    <textarea class="form-control bg-light border-0 shadow-sm " id="content" name="content" placeholder="Contenido..."></textarea>
+                    <label for="contenido">Contenido</label>
+                    <textarea class="form-control bg-light border-0 shadow-sm " id="contenido" name="contenido" formControlName="contenido" placeholder="Contenido..."></textarea>
+                    <div *ngIf="f['contenido'].touched && f['contenido'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['contenido'].errors?.['required']">*Campo requerido.</div>
+                    </div>
                 </div>
                 <br>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="importante" name="importante">
+                    <input type="checkbox" class="form-check-input" id="importante" formControlName="importante" name="importante">
                     <label class="form-check-label" for="importante">Importante</label>
                 </div>
 
-                <button class="btn btn-primary btn-lg col-12 my-3">Enviar</button><br>
+                <div class="row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Enviar</button>
+                    </div>
+                </div>
+                <br>
 
             </form>
         </div>
